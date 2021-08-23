@@ -24,6 +24,8 @@ pygame.init()
 
 screen = pygame.display.set_mode((1200, 400))
 
+dino_state = "run"
+
 dino = pygame.image.load("sprites/trex1.png")
 cacti = pygame.image.load("sprites/obstacle1.png")
 ground = pygame.image.load("sprites/ground.png")
@@ -31,6 +33,8 @@ ground = pygame.image.load("sprites/ground.png")
 dino_rect = Dino(100, 250, 64, 64)
 cactus_rect = Cactus(1100, 275, 32, 32)
 ground_rect = pygame.Rect(0, 330, 1200, 2)
+
+dino_y_change = 0
 
 while True:
     screen.fill((255, 255, 255))
