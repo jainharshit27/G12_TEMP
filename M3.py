@@ -26,6 +26,9 @@ screen = pygame.display.set_mode((1200, 400))
 
 dino_state = "run"
 
+# Declare score variable
+# Declare font variable
+
 dino = pygame.image.load("sprites/trex1.png")
 cacti = pygame.image.load("sprites/obstacle1.png")
 ground = pygame.image.load("sprites/ground.png")
@@ -42,7 +45,24 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-            
+        
+        if dino_state == "run":
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    dino_y_change = -1
+        # Add the code when dino_state is in "jump" state.
+
+    dino_rect.rect.y += dino_y_change
+    
+    # Limit dino at 250 and change dino_state to "run"
+    if dino_rect.rect.y < 100:
+        dino_state = "jump"
+        dino_rect.rect.y = 100
+        # Change value of dino_y_change to bring dino down
+    
+    # Move the Cactus
+    # Make the cactus reappear again at 1200 if it reaches -30
+    
     dino_rect.paste_image(dino)
     cactus_rect.paste_image(cacti)
     
@@ -53,6 +73,11 @@ while True:
         screen.blit(ground, (image_width + ground_rect.x, ground_rect.y))
         ground_rect.x = 0
     ground_rect.x -= 1
+
+    # Increase score, then render and paste the score
+
+    # Add conditional statement to check  collision between dino and cactus
+        #if collided display a white screen, show score and quit
 
     pygame.display.update()
     pygame.time.delay(1)
